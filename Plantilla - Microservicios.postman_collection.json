@@ -1,0 +1,653 @@
+{
+  "info": {
+    "_postman_id": "07eb6d58-49a2-4cc1-9484-119fe9ce1109",
+    "name": "Plantilla - Microservicios",
+    "description": "Colección de pruebas para los microservicios de gestión de clientes y cuentas bancarias",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "13910567"
+  },
+  "item": [
+    {
+      "name": "Customer Service",
+      "item": [
+        {
+          "name": "Crear Cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"person\": {\n    \"name\": \"John Tenesaca\",\n    \"gender\": \"M\",\n    \"identification\": \"12345678959\",\n    \"address\": \"Baños\",\n    \"phone\": \"0999277596\"\n  },\n  \"password\": \"1234\",\n  \"status\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/v1/customers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "v1",
+                "customers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Todos los Clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/v1/customers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "v1",
+                "customers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/v1/customers/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "v1",
+                "customers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jose Lema Actualizado\",\n  \"address\": \"Nueva dirección actualizada\",\n  \"phone\": \"0987654321\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/v1/customers/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "v1",
+                "customers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Actualiza un cliente. Solo el ID en la URL es obligatorio. Todos los campos del body son opcionales - solo se actualizarán los campos enviados.\n\nCampos disponibles:\n- name (opcional)\n- gender (opcional)\n- identification (opcional)\n- address (opcional) ✅\n- phone (opcional) ✅\n- password (opcional)\n- status (opcional)"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/v1/customers/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "v1",
+                "customers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Account Service",
+      "item": [
+        {
+          "name": "Cuentas",
+          "item": [
+            {
+              "name": "Crear Cuenta",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_number\": \"478759\",\n  \"account_type\": \"Ahorro\",\n  \"initial_balance\": 2000.00,\n  \"status\": true,\n  \"customer_id\": 4\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/accounts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Todas las Cuentas",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/accounts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Cuenta por ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/accounts/:id",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Cuentas por Cliente",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/accounts/customer/:customerId",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts",
+                    "customer",
+                    ":customerId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "customerId",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Cuenta",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_type\": \"Corriente\",\n  \"status\": false,\n  \"initial_balance\": 3000.00\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/accounts/:id",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "2"
+                    }
+                  ]
+                },
+                "description": "Actualiza una cuenta. Solo el ID en la URL es obligatorio. Solo se pueden actualizar account_type, status e initial_balance. Todos los campos del body son opcionales - solo se actualizarán los campos enviados.\n\nCampos disponibles:\n- account_type (opcional)\n- status (opcional)\n- initial_balance (opcional)"
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Cuenta",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/accounts/:id",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Movimientos",
+          "item": [
+            {
+              "name": "Crear Movimiento - Débito",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": 1,\n  \"movement_type\": \"DEBIT\", // DEBIT or CREDIT \n  \"value\": 575.00\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/movements",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "movements"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Movimiento - Crédito",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": 2,\n  \"movement_type\": \"CREDIT\",\n  \"value\": 600.00\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/movements",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "movements"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Todos los Movimientos",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/movements",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "movements"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Movimiento por ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/movements/:id",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "movements",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Movimientos por Cuenta",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/movements/account/:accountId",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "movements",
+                    "account",
+                    ":accountId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "accountId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Movimiento",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/v1/movements/:id",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "v1",
+                    "movements",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Reportes",
+          "item": [
+            {
+              "name": "Generar Estado de Cuenta - JSON",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/reports/:client-id?startDate=2026-01-01T00:00:00&endDate=2026-12-31T23:59:59&format=json",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "reports",
+                    ":client-id"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-12-31T23:59:59"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "client-id",
+                      "value": "4"
+                    }
+                  ]
+                },
+                "description": "Genera un estado de cuenta en formato tabla plana. Retorna un array de movimientos donde cada fila incluye:\n- Fecha\n- Cliente (nombre del propietario)\n- Número Cuenta\n- Tipo (Tipo de Cuenta: Corriente, Ahorro, etc.)\n- Saldo Inicial (saldo antes del movimiento)\n- Estado (true/false)\n- Valor movimiento\n- Tipo Movimiento (Crédito/Débito)\n- Saldo Disponible (saldo después del movimiento)\n\nMuestra TODAS las cuentas del cliente con sus movimientos en el rango de fechas especificado. Los movimientos están ordenados por fecha (más recientes primero)."
+              },
+              "response": []
+            },
+            {
+              "name": "Generar Estado de Cuenta - Excel",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/reports/:client-id?startDate=2026-01-01T00:00:00&endDate=2026-12-31T23:59:59&format=excel",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "reports",
+                    ":client-id"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-12-31T23:59:59"
+                    },
+                    {
+                      "key": "format",
+                      "value": "excel"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "client-id",
+                      "value": "4"
+                    }
+                  ]
+                },
+                "description": "Genera un estado de cuenta en formato Excel. Descarga un archivo .xlsx con una tabla plana que incluye TODAS las cuentas del cliente y sus movimientos.\n\nColumnas del Excel:\n- Fecha\n- Cliente (nombre del propietario)\n- Número Cuenta\n- Tipo (Tipo de Cuenta: Corriente, Ahorro, etc.)\n- Saldo Inicial (saldo antes del movimiento)\n- Estado (True/False)\n- Valor movimiento\n- Tipo Movimiento (Crédito/Débito)\n- Saldo Disponible (saldo después del movimiento)\n\nEl archivo se genera en memoria y se descarga directamente. No se guarda en el servidor."
+              },
+              "response": []
+            },
+            {
+              "name": "Listado de Movimientos por Fecha y Usuario",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/reports/:client-id/movements?startDate=2026-01-01T00:00:00&endDate=2026-12-31T23:59:59",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "reports",
+                    ":client-id",
+                    "movements"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-12-31T23:59:59"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "client-id",
+                      "value": "4"
+                    }
+                  ]
+                },
+                "description": "Genera un listado detallado de movimientos por fecha y usuario. Cada fila incluye:\n- Fecha\n- Cliente (nombre)\n- Número Cuenta\n- Tipo\n- Saldo Inicial\n- Estado\n- Valor movimiento\n- Tipo Movimiento (Crédito/Débito)\n- Saldo Disponible\n\nLos movimientos se ordenan por fecha (más recientes primero)."
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "customer_service_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "account_service_url",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ]
+}
